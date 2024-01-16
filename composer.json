@@ -1,0 +1,25 @@
+{
+  "name": "adabay/twill-contact-forms",
+  "description": "A Twill CMS package",
+  "version": "1.0.0",
+  "homepage": "https://github.com/adabay/twill-contact-forms",
+  "license": "MIT",
+  "require": {
+    "php": "^8.0",
+    "area17/twill": "^3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "adabay\\TwillContactForms\\": "src"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "adabay\\TwillContactForms\\TwillFormBuilderServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}
