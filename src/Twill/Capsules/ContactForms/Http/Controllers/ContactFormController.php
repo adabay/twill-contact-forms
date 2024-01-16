@@ -15,7 +15,8 @@ use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 
 class ContactFormController extends BaseModuleController
 {
-    protected $moduleName = 'forms';
+
+    protected $moduleName = 'contactForms';
     /**
      * This method can be used to enable/disable defaults. See setUpController in the docs for available options.
      */
@@ -57,11 +58,11 @@ class ContactFormController extends BaseModuleController
     {
         app()->setLocale($request->input("_locale"));
 
-        if (!$request->input("formId")) {
+        if (!$request->input("contactFormId")) {
             throw new BadRequestException();
         }
 
-        $formId = $request->input("formId");
+        $formId = $request->input("contactFormId");
         $formRepository = app(ContactFormRepository::class);
         /* @var ContactForm $form */
         $form = $formRepository->getById($formId);

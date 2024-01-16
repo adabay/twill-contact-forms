@@ -4,11 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFormsTables extends Migration
+class CreateContactFormsTables extends Migration
 {
     public function up()
     {
-        Schema::create('forms', function (Blueprint $table) {
+        Schema::create('contact_forms', function (Blueprint $table) {
             // this will create an id, a "published" column, and soft delete and timestamps columns
             createDefaultTableFields($table);
 
@@ -17,22 +17,22 @@ class CreateFormsTables extends Migration
             // $table->timestamp('publish_end_date')->nullable();
         });
 
-        Schema::create('form_translations', function (Blueprint $table) {
-            createDefaultTranslationsTableFields($table, 'form');
+        Schema::create('contact_form_translations', function (Blueprint $table) {
+            createDefaultTranslationsTableFields($table, 'contact_form');
             $table->string('title', 200)->nullable();
             $table->text('description')->nullable();
             $table->unsignedBigInteger('successPage')->nullable();
         });
 
-        Schema::create('form_revisions', function (Blueprint $table) {
-            createDefaultRevisionsTableFields($table, 'form');
+        Schema::create('contact_form_revisions', function (Blueprint $table) {
+            createDefaultRevisionsTableFields($table, 'contact_form');
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('form_revisions');
-        Schema::dropIfExists('form_translations');
-        Schema::dropIfExists('forms');
+        Schema::dropIfExists('contact_form_revisions');
+        Schema::dropIfExists('contact_form_translations');
+        Schema::dropIfExists('contact_forms');
     }
 }

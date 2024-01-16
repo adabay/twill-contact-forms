@@ -2,4 +2,4 @@
 
 use A17\Twill\Facades\TwillRoutes;
 
-TwillRoutes::module('forms');
+TwillRoutes::module('contactForms');
