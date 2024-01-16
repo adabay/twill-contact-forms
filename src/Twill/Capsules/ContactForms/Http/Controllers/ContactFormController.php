@@ -9,7 +9,6 @@ use A17\Twill\Services\Forms\Fields\Input;
 use A17\Twill\Services\Forms\Form;
 use A17\Twill\Http\Controllers\Admin\ModuleController as BaseModuleController;
 use adabay\TwillContactForms\Twill\Capsules\ContactForms\Models\ContactForm;
-use App\Models\Page;
 use adabay\TwillContactForms\Twill\Capsules\ContactForms\Repositories\ContactFormRepository;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
@@ -83,7 +82,6 @@ class ContactFormController extends BaseModuleController
 
         // TODO Process From Data
 
-        /* @var Page | null $successPage */
         $successPage = $form->getFirstRelated("successPage");
         if ($successPage) {
             return response()->redirectToRoute("cms-page", [
