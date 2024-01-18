@@ -1,4 +1,4 @@
-@twillBlockGroup('adabay-contact-form')
+@twillBlockGroup('twill-contact-forms')
 @twillBlockTitle('Input Field')
 @twillBlockIcon('location')
 

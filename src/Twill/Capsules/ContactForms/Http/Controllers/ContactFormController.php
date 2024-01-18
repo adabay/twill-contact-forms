@@ -3,6 +3,7 @@
 namespace adabay\TwillContactForms\Twill\Capsules\ContactForms\Http\Controllers;
 
 use A17\Twill\Models\Contracts\TwillModelContract;
+use A17\Twill\Services\Forms\Fields\BlockEditor;
 use A17\Twill\Services\Listings\Columns\Text;
 use A17\Twill\Services\Listings\TableColumns;
 use A17\Twill\Services\Forms\Fields\Input;
@@ -11,12 +12,16 @@ use A17\Twill\Http\Controllers\Admin\ModuleController as BaseModuleController;
 use adabay\TwillContactForms\Twill\Capsules\ContactForms\Models\ContactForm;
 use adabay\TwillContactForms\Twill\Capsules\ContactForms\Repositories\ContactFormRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 
 class ContactFormController extends BaseModuleController
 {
 
+    protected $viewPrefix = 'twill-contact-forms.views.twill';
+
     protected $moduleName = 'contactForms';
+
     /**
      * This method can be used to enable/disable defaults. See setUpController in the docs for available options.
      */
@@ -33,9 +38,21 @@ class ContactFormController extends BaseModuleController
     {
         $form = parent::getForm($model);
 
-        $form->add(
-            Input::make()->name('description')->label('Description')->translatable()
-        );
+        $form
+            ->add(
+                Input::make()
+                    ->name('description')
+                    ->label('Description')
+                    ->translatable()
+            )
+            ->add(
+                BlockEditor::make()
+                    ->name('contactFormFields')
+                    ->label('Add Form Fields')
+                    ->blocks([
+                        'form-input'
+                    ])
+            );
 
         return $form;
     }
